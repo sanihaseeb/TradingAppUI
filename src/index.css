@@ -22,3 +22,9 @@ h1
 .percentage-loss {
   color: #ee0a0a
 }
+
+.uiButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

@@ -95,7 +95,6 @@ function TransactionHistory() {
                 <TableCell align="right">Order Time</TableCell>
                 <TableCell align="right">Transaction Type</TableCell>
                 <TableCell align="right">Transaction Status</TableCell>
-               {/* <TableCell align="left"> <Button variant="contained" onClick={() => goToHome() }>Home </Button></TableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -121,6 +120,9 @@ function TransactionHistory() {
       </Table>
     </TableContainer>
     </header>
+    <div className = "uiButton">
+        <TableCell align="left"> <Button variant="contained" onClick={() => goToHome() }>Home </Button></TableCell>
+    </div>
     </div>
 
   );
