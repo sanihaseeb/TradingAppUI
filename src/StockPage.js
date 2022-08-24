@@ -48,6 +48,10 @@ function StockPage() {
     const [stocks, setStocks] = useState([]);
     const rows = stocks;
 
+    const goToHome = () => {
+      navigate('/');
+    }
+
     useEffect(() => {
       
     
@@ -104,6 +108,7 @@ function StockPage() {
         </TableBody>
       </Table>
     </TableContainer>
+    {/* <Button variant="contained" onClick={() => goToHome() }>Home </Button> */}
     </div>
      </div>
 

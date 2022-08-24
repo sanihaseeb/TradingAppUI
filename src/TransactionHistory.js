@@ -47,10 +47,18 @@ function TransactionHistory() {
     postData(url_history, {
       symbol: row.symbol,
       currentPrice: row.currentPrice,
+      tradingPrice: row.tradingPrice,
       status: 0,
       type: "SELL"
     });
     navigate('/transaction-history');
+  }
+
+  const handleBuyButton = () => {
+    navigate('/listing');
+  }
+  const goToHome = () => {
+    navigate('/');
   }
 
     useEffect(() => {
@@ -68,13 +76,14 @@ function TransactionHistory() {
         };
     
         fetchData();
-    }, []);
+    }, [history]);
     
   return (
     
     <div className="App">
       <header className="App-header">
-      <header><h1>My Order History</h1></header>
+      <header><h1>My Order History </h1></header>
+     
       <TableContainer style={{ width: 1000 }} sx={{ minWidth: 650 }} component={Paper}>
       <Table size="medium" aria-label="a dense table">
         <TableHead>
@@ -86,6 +95,7 @@ function TransactionHistory() {
                 <TableCell align="right">Order Time</TableCell>
                 <TableCell align="right">Transaction Type</TableCell>
                 <TableCell align="right">Transaction Status</TableCell>
+               {/* <TableCell align="left"> <Button variant="contained" onClick={() => goToHome() }>Home </Button></TableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -103,7 +113,8 @@ function TransactionHistory() {
               <TableCell align="right">{formatDate(row.orderTime)}</TableCell>
               <TableCell align="right">{row.type}</TableCell>
               <TableCell align="right">{row.status === "0" ? "PLACED" : row.status === "1" ? "IN PROGRESS" : row.status === "2" ? "SUCCESSFUL" : "FAILED" }</TableCell>
-              <TableCell > <Button variant="contained" color="primary" onClick={() => handleSell(row) }>TRADE </Button></TableCell>
+              <TableCell > <Button variant="contained" color="success" onClick={() => handleBuyButton() }>BUY </Button></TableCell>
+              <TableCell > <Button disabled={(row.type === "BUY" && row.status === "2") ? false: true}variant="contained" color="error" onClick={() => handleSell(row) }>SELL </Button></TableCell>
             </TableRow>
           ))}
         </TableBody>
