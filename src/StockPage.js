@@ -108,9 +108,11 @@ function StockPage() {
         </TableBody>
       </Table>
     </TableContainer>
-    {/* <Button variant="contained" onClick={() => goToHome() }>Home </Button> */}
+    <div className="uiButton">
+        <TableCell align="left"><Button variant="contained" onClick={() => goToHome() }>Home </Button></TableCell>
     </div>
-     </div>
+    </div>
+    </div>
 
   );
 }
