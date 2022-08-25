@@ -141,7 +141,7 @@ function StockPage() {
         <TableCell align="left"><Button variant="contained" color="secondary" onClick={() => goToHistory() }>View My Orders </Button></TableCell>
     </div>
     <div className="user-balance">
-      Current Balance (USD): $ {user.balance}
+      Current Balance (USD): ${Math.round(user.balance*100)/100}
     </div>
     </div>
     </div>
