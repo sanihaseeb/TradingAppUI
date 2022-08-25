@@ -28,3 +28,10 @@ h1
     top: 0;
     right: 0;
 }
+
+.user-balance {
+  color: #ffffff; font-family: "Great Vibes", cursive; font-size: 30px; line-height: 100px; font-weight: normal; margin-bottom: 0px; margin-top: 0px; text-align: center; text-shadow: 0 1px 1px #fff; 
+  position: absolute;
+  top: 0;
+  left: 0;
+}

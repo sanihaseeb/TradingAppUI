@@ -15,6 +15,7 @@ import Button from '@mui/material/Button';
 function TransactionHistory() {
 
     const [history, setHistory] = useState([]);
+    const [user, setUser] = useState([]);
     const rows = history;
 
     const formatDate = (dateString) => {
@@ -43,6 +44,7 @@ function TransactionHistory() {
   }
   const url = "http://trading-app-trading-app.openshift75.conygre.com/api/stocks";
   const url_history = "http://trading-app-trading-app.openshift75.conygre.com/api/history";
+
   const handleSell = (row) => {
     postData(url_history, {
       symbol: row.symbol,
@@ -60,28 +62,37 @@ function TransactionHistory() {
   const goToHome = () => {
     navigate('/');
   }
+  const goToTrade = () => {
+    navigate('/listing');
+  }
+  const goToPortfolio = () => {
+    navigate('/portfolio');
+  }
+
+ 
 
     useEffect(() => {
         const url = "http://trading-app-trading-app.openshift75.conygre.com/api/history";
-    
+
         const fetchData = async () => {
           try {
             const response = await fetch(url);
             const json = await response.json();
-            console.log(json);
+            // console.log(json);
             setHistory(json);
           } catch (error) {
             console.log("error", error);
           }
         };
-    
+
         fetchData();
     }, [history]);
-    
+
+
   return (
     
     <div className="App">
-      <header className="App-header">
+      <div className="App-header">
       <header><h1>My Order History </h1></header>
      
       <TableContainer style={{ width: 1000 }} sx={{ minWidth: 650 }} component={Paper}>
@@ -119,10 +130,13 @@ function TransactionHistory() {
         </TableBody>
       </Table>
     </TableContainer>
-    </header>
+    
     <div className = "uiButton">
-        <TableCell align="left"> <Button variant="contained" onClick={() => goToHome() }>Home </Button></TableCell>
+    <TableCell align="left"><Button variant="contained" onClick={() => goToHome() }>Home </Button></TableCell>
+        <TableCell align="left"><Button variant="contained" color="primary" onClick={() => goToTrade() }>Back to Trading </Button></TableCell>
+        <TableCell align="left"><Button variant="contained" color="success" onClick={() => goToPortfolio() }>My Portfolio </Button></TableCell>
     </div>
+      </div>
     </div>
 
   );

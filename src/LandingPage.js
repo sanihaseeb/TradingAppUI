@@ -18,9 +18,26 @@ import Button from '@mui/material/Button';
 function LandingPage() {
 
   const navigate = useNavigate();
+  const [user, setUser] = useState([]);
 
-  const url = "http://trading-app-trading-app.openshift75.conygre.com/api/stocks";
+  const url = "http://trading-app-trading-app.openshift75.conygre.com/api/users";
   const url_history = "http://trading-app-trading-app.openshift75.conygre.com/api/history";
+
+  useEffect(() => {
+      
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const json = await response.json();
+        console.log("USER " + json[0].username);
+        setUser(json[0]);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+
+    fetchData();
+}, []);
 
   const handleHistoryButton = () => {
     navigate('/transaction-history');
@@ -30,6 +47,9 @@ function LandingPage() {
     navigate('/listing')
   }
 
+  const handlePortfolio = () => {
+    navigate('/portfolio')
+  }
 
     
   return (
@@ -39,6 +59,10 @@ function LandingPage() {
         <header><h1>Welcome to TradeNOW!</h1></header>
         <TableCell > <Button variant="contained" color="primary" onClick={() => handleStockListingButton() }>Trade Now </Button></TableCell>
         <TableCell > <Button variant="contained" color="secondary" onClick={() => handleHistoryButton() }>View My Orders </Button></TableCell>
+        <TableCell > <Button variant="contained" color="success" onClick={() => handlePortfolio() }>View Portfolio </Button></TableCell>
+        {/* <div className="user-balance">
+          Hello, {user.username}!
+        </div> */}
     </div>
      </div>
 

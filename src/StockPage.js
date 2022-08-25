@@ -36,21 +36,33 @@ function StockPage() {
     });
     return response.json(); // parses JSON response into native JavaScript objects
   }
+
+ 
   const url = "http://trading-app-trading-app.openshift75.conygre.com/api/stocks";
   const url_history = "http://trading-app-trading-app.openshift75.conygre.com/api/history";
+  const url_user = "http://trading-app-trading-app.openshift75.conygre.com/api/users";
 
-  const handleBuyButton = (data) => {
+  const handleBuyButton = (data, updatedBalance) => {
     
     postData(url_history, data);
+    // updateUserBalance(url_user + "/1", updatedBalance);
     navigate('/transaction-history');
   }
 
     const [stocks, setStocks] = useState([]);
+    const [user, setUser] = useState([]);
     const rows = stocks;
 
     const goToHome = () => {
       navigate('/');
     }
+    const goToHistory = () => {
+      navigate('/transaction-history');
+    }
+
+  const goToPortfolio = () => {
+    navigate('/portfolio');
+  }
 
     useEffect(() => {
       
@@ -65,7 +77,18 @@ function StockPage() {
             console.log("error", error);
           }
         };
-    
+
+        const fetchUser = async () => {
+          try {
+            const response = await fetch(url_user);
+            const json = await response.json();
+            console.log(json);
+            setUser(json[0]);
+          } catch (error) {
+            console.log("error", error);
+          }
+        };
+        fetchUser();
         fetchData();
     }, []);
     
@@ -102,6 +125,10 @@ function StockPage() {
                  tradingPrice: row.price,
                  status: 0,
                  type: "BUY"
+              }, {
+                user_id: 1,
+                balance: (user.balance - row.price),
+                username: "Bill"
               })}>BUY </Button></TableCell>
             </TableRow>
           ))}
@@ -110,6 +137,11 @@ function StockPage() {
     </TableContainer>
     <div className="uiButton">
         <TableCell align="left"><Button variant="contained" onClick={() => goToHome() }>Home </Button></TableCell>
+        <TableCell align="left"><Button variant="contained" color="success" onClick={() => goToPortfolio() }>My Portfolio </Button></TableCell>
+        <TableCell align="left"><Button variant="contained" color="secondary" onClick={() => goToHistory() }>View My Orders </Button></TableCell>
+    </div>
+    <div className="user-balance">
+      Current Balance (USD): $ {user.balance}
     </div>
     </div>
     </div>
