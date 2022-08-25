@@ -15,6 +15,7 @@ function UserPortfolio() {
 
     const [history, setHistory] = useState([]);
     const [user, setUser] = useState([]);
+    const [clicked, setClicked] = useState(false);
     const rows = history;
 
 
@@ -75,7 +76,7 @@ function UserPortfolio() {
       const type = history[history.length - 1].type;
       let response;
       console.log(status);
-      if(status === "2") {
+      if(status === "2" && !clicked) {
         if(type==="BUY") {
       console.log("Putting DATA: ", price);
        response = await fetch(url, {
@@ -107,7 +108,7 @@ function UserPortfolio() {
           body: JSON.stringify({balance: user.balance + price}) // body data type must match "Content-Type" header
         });
     }
-
+      setClicked(true);
       return response.json(); // parses JSON response into native JavaScript objects
       } 
 
@@ -127,13 +128,14 @@ function UserPortfolio() {
             label: '# of Transactions',
             data: [buys, sells],
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
+            'rgba(35, 136, 35)',
+            'rgba(210, 34, 45)',
+            
+              
             ],
             borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-            
+                'rgba(35, 136, 35)',
+                'rgba(210, 34, 45)',
             ],
             borderWidth: 1,
           },
