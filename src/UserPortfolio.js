@@ -122,7 +122,6 @@ function UserPortfolio() {
     }
 
      const data = {
-        labels: ['BUY', 'SELL'],
         datasets: [
           {
             label: '# of Transactions',
@@ -140,6 +139,7 @@ function UserPortfolio() {
             borderWidth: 1,
           },
         ],
+        labels: ['BUY', 'SELL'],
       };
   
     
@@ -159,7 +159,7 @@ function UserPortfolio() {
             </div>
 
         </div>
-       // buttons removed from here temp
+
 
     </div>
 
@@ -171,6 +171,8 @@ function UserPortfolio() {
                 <TableCell align="left"><Button variant="contained" color="secondary" onClick={() => goToHistory() }>View My Orders </Button></TableCell>
             </div>
             <div className = "chart">
+            <header><h1>Transaction Analysis</h1></header>
+            <header><h4><span style={{color:"rgba(35, 136, 35)"}}>Buy</span>/<span style={{color:"rgba(210, 34, 45)"}}>Sell</span> Ratio</h4></header>
                 <Doughnut data={data} />
             </div>
         </div>
