@@ -144,26 +144,38 @@ function UserPortfolio() {
   
     
   return (
-    
-    <div className="App">
-      <div className="App-header">
-      <header><h1>My Portfolio</h1></header>
-      <TableCell align="left"><Button variant="contained" color="secondary" style={{
-        borderRadius: 35,
-        padding: "18px 36px",
-        fontSize: "18px"
-    }} onClick={() => updateUserBalance()}>Update Balance </Button></TableCell>
-    <TableCell align="left" style={{fontSize: "30px"}}>$ {(Math.round(user.balance*100)/100)}</TableCell>
-    <div className = "uiButton">
-    <TableCell align="left"><Button variant="contained" onClick={() => goToHome() }>Home </Button></TableCell>
-        <TableCell align="left"><Button variant="contained" color="success" onClick={() => goToTrade() }>Back to Trading </Button></TableCell>
-        <TableCell align="left"><Button variant="contained" color="secondary" onClick={() => goToHistory() }>View My Orders </Button></TableCell>
-    </div>
-    <Doughnut data={data} />
-      </div>
-    
+
+    <div className="allContent">
+    <div className="appContainer" >
+        <div className="App">
+            <div className="App-header">
+                <header><h1>My Portfolio</h1></header>
+                <TableCell align="left"><Button variant="contained" color="secondary" style={{
+                borderRadius: 35,
+                padding: "18px 36px",
+                fontSize: "18px"
+                }} onClick={() => updateUserBalance()}>Update Balance </Button></TableCell>
+                <TableCell align="left" style={{fontSize: "30px"}}>$ {(Math.round(user.balance*100)/100)}</TableCell>
+            </div>
+
+        </div>
+       // buttons removed from here temp
+
     </div>
 
+    <div className="chartContainer" >
+        <div className="App-header">
+            <div className = "uiButton">
+                <TableCell align="left"><Button variant="contained" onClick={() => goToHome() }>Home </Button></TableCell>
+                <TableCell align="left"><Button variant="contained" color="success" onClick={() => goToTrade() }>Back to Trading </Button></TableCell>
+                <TableCell align="left"><Button variant="contained" color="secondary" onClick={() => goToHistory() }>View My Orders </Button></TableCell>
+            </div>
+            <div className = "chart">
+                <Doughnut data={data} />
+            </div>
+        </div>
+    </div>
+    </div>
   );
 }
 

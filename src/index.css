@@ -35,3 +35,31 @@ h1
   top: 0;
   left: 0;
 }
+
+.chartBounds {
+    height: 10px;
+    width: 10px;
+}
+
+.chart {
+
+    position: absolute;
+    height: 30%;
+    width: 30%;
+    margin-top: -325px;
+    margin-left: -10%;
+
+}
+
+.chartContainer {
+    background-color: #003B70;
+    float: right;
+    height: 100px;
+    width: 50%;
+}
+
+.allContent {
+    position: fixed;
+    height: 100px;
+    width: 100%;
+}
