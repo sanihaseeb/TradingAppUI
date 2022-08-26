@@ -4,12 +4,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import TableCell from '@mui/material/TableCell';
 import Button from '@mui/material/Button';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
-
-
-
-
 
 function LandingPage() {
 

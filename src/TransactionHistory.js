@@ -119,7 +119,7 @@ function TransactionHistory() {
               </TableCell>
               <TableCell align="right">{row.currentPrice}</TableCell>
               <TableCell align="right">{row.tradingPrice}</TableCell>
-              <TableCell align="right"><div className={row.currentPrice > row.tradingPrice ? "percentage-gain" : "percentage-loss"}>{((row.currentPrice-row.tradingPrice)/row.tradingPrice) + "%"}</div></TableCell>
+              <TableCell align="right"><div className={row.currentPrice > row.tradingPrice ? "percentage-gain" : "percentage-loss"}>{((row.currentPrice-row.tradingPrice)/row.tradingPrice)*100 + "%"}</div></TableCell>
               <TableCell align="right">{formatDate(row.orderTime)}</TableCell>
               <TableCell align="right">{row.type}</TableCell>
               <TableCell align="right">{row.status === "0" ? "PLACED" : row.status === "1" ? "IN PROGRESS" : row.status === "2" ? "SUCCESSFUL" : "FAILED" }</TableCell>
